@@ -18,7 +18,14 @@ parts:
   innoextract:
     plugin: cmake
     source: ./
-    build-packages: [liblzma-dev, libboost-iostreams-dev]
+    build-packages:
+      - liblzma-dev
+      - libboost-iostreams-dev
+      - libboost-filesystem-dev
+      - libboost-date-time-dev
+      - libboost-system-dev
+      - libboost-program-options-dev
+
   deps:
     plugin: nil
     stage-packages:
