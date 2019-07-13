@@ -1,0 +1,33 @@
+name: innoextract-lool
+base: core18
+version: git
+summary: A tool to unpack installers created by Inno Setup
+description: |
+  Inno Setup is a tool to create installers for Microsoft Windows
+  applications. innoextract allows to extract such installers under non-Windows
+  systems without running the actual installer using wine. innoextract
+  currently supports installers created by Inno Setup 1.2.10 to 5.6.0.
+  
+  In addition to standard Inno Setup installers, innoextract also supports some
+  modified Inno Setup variants including Martijn Laan's My Inno Setup
+  Extensions 3.0.6.1 as well as GOG.com's Inno Setup-based game installers.
+grade: stable
+confinement: classic
+
+parts:
+  innoextract:
+    plugin: cmake
+    source: ./
+    build-packages: [liblzma-dev, libboost-iostreams-dev]
+  deps:
+    plugin: nil
+    stage-packages:
+      - libboost-iostreams1.65.1
+      - libboost-filesystem1.65.1
+      - libboost-program-options1.65.1
+      - libboost-system1.65.1
+
+apps:
+  innoextract:
+    command: bin/innoextract
+
